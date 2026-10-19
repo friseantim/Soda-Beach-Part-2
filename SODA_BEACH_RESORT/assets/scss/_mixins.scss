@@ -1,0 +1,10 @@
+@mixin pill {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1.3rem;
+}
+@mixin glass {
+  background: rgba(20, 14, 10, 0.6);
+  border-radius: 18px;
+  padding: 1.5rem;
+}

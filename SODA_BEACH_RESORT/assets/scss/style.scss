@@ -1,0 +1,84 @@
+@import 'variables';
+@import 'mixins';
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: $font-body; color: $white; background: url('../img/bg.jpg') center / cover fixed, linear-gradient(135deg, #1f4650 0%, #1c1612 100%) fixed; }
+.shade { min-height: 100vh; background: rgba(0, 0, 0, 0.5); }
+a { color: $tan; }
+h1, h2, h3 { font-family: $font-head; }
+h1 { text-transform: uppercase; text-align: center; font-size: clamp(1.8rem, 5vw, 2.8rem); margin: 0 0 1.5rem; }
+
+.topbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; background: rgba(0, 0, 0, 0.55); }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.topbar a { text-decoration: none; color: $white; font-size: 0.9rem; }
+.topbar a:hover { color: $tan; }
+.brand { font-family: $font-head; font-size: 1.2rem; color: $tan !important; }
+
+.container { max-width: 1050px; margin: 0 auto; padding: 2rem 1rem; }
+.container.narrow { max-width: 640px; }
+.card { @include glass; margin-bottom: 1.2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 1.2rem; }
+.grid .card { margin: 0; text-align: center; }
+.hero { text-align: center; padding: 3rem 0; }
+.price, .big { font-family: $font-head; font-size: 1.8rem; color: $tan; margin: 0.3rem 0; }
+
+.auth { display: block; }
+.auth .shade { display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; }
+.auth-box { width: min(440px, 100%); }
+.auth-form { display: flex; flex-direction: column; gap: 0.8rem; }
+
+input, select { @include pill; font: inherit; font-size: 0.8rem; width: 100%; background: $white; color: $ink; }
+input::placeholder { text-transform: uppercase; color: #555; font-size: 0.72rem; }
+.pw-wrap { position: relative; }
+.pw-toggle { position: absolute; right: 0.9rem; top: 50%; transform: translateY(-50%); background: none; border: 0; cursor: pointer; color: #444; padding: 0; display: flex; }
+.pw-toggle .slash { opacity: 1; }
+.pw-toggle.on .slash { opacity: 0; }
+
+.actions { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; margin-top: 1.2rem; }
+.btn { @include pill; background: $tan; color: $ink; font: inherit; font-size: 0.78rem; text-transform: uppercase; text-decoration: none; text-align: center; cursor: pointer; min-width: 220px; display: inline-block; }
+.btn:hover { background: $tan-dark; }
+.link { font-size: 0.7rem; text-transform: uppercase; color: $white; text-decoration: none; }
+
+.alert { background: $danger; border-radius: 12px; padding: 0.7rem 1rem; font-size: 0.85rem; }
+.alert.ok { background: $ok; }
+.hint, small { color: #d8cbbd; font-size: 0.8rem; }
+
+label { display: block; margin-bottom: 0.9rem; font-size: 0.85rem; }
+label input { margin-top: 0.3rem; }
+fieldset { border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 12px; margin-bottom: 1rem; }
+label.opt { display: flex; gap: 0.6rem; align-items: center; }
+label.opt input { width: auto; margin: 0; }
+.total { font-size: 1.2rem; }
+.inline { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: flex-end; }
+.inline label { margin: 0; }
+.inline input { min-width: 180px; }
+
+.scroll { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.table th, .table td { padding: 0.55rem 0.6rem; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+.table input { max-width: 140px; }
+.table .sum th { color: $tan; }
+.badge { padding: 0.15rem 0.7rem; border-radius: 999px; font-size: 0.72rem; background: #777; }
+.badge.paid { background: $ok; }
+.badge.pending { background: $tan-dark; }
+
+.bar { height: 8px; background: rgba(255, 255, 255, 0.2); border-radius: 99px; overflow: hidden; margin: 0.4rem 0; }
+.bar span { display: block; height: 100%; background: $tan; }
+.barcell { width: 35%; }
+
+.ticket { text-align: center; }
+#qr { display: flex; justify-content: center; background: $white; width: fit-content; margin: 1rem auto; padding: 12px; border-radius: 12px; }
+.code { font-family: monospace; letter-spacing: 0.2em; font-size: 1.2rem; }
+#reader { margin: 1rem 0; color: $ink; }
+
+body.admin { background: $cream; color: $ink; }
+body.admin .shade { background: none; }
+body.admin .card { background: $white; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); }
+body.admin .table th, body.admin .table td { border-color: #eadfd2; }
+body.admin .hint, body.admin small { color: #7a6a5b; }
+body.admin input { border: 1px solid #d9c9b8; }
+body.admin .price, body.admin .big { color: $tan-dark; }
+body.admin .bar { background: #eadfd2; }
+body.admin .link { color: $ink; }
+
+@media print { .topbar, .btn, form { display: none !important; } body { background: #fff; color: #000; } .card { background: #fff; color: #000; } .shade { background: none; } }
